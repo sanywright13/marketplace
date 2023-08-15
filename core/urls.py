@@ -1,13 +1,14 @@
 from django.contrib import admin
 from django.urls import path ,include
-from .views import Index,Contact,detailPage
+from .views import Index,Contact,detailPage,SignUpView
 from django.conf.urls.static import static
 from django.conf import settings
 app_name='core'
 urlpatterns = [
 path('',Index,name='index'),
+path('signup/',SignUpView,name='signup'),
 path('contact/',Contact,name='contact'),
-#path('<int :pk>/',detailPage,name='item-detail')
+
 ]
 # Serving the media files in development mode
 if settings.DEBUG:
