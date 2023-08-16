@@ -1,0 +1,27 @@
+
+{% extends 'core/base.html' %}
+
+{% block title %} Sign up Page{% endblock title%}
+{% block BodyContent %}
+{% include 'core/navbar.html' %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="inline-block mb-2">Username :</label>
+    {{form.username}}
+    </div>
+    <div class="mb-3">
+        <label class="inline-block mb-2">Password</label>
+    {{form.password}}
+    </div>
+    {% if form.errors or form.non_field_errors%}
+
+    {% for field in form %}
+    {{ field.errors}}
+    {%endfor%}
+    {{ form.non_field_errors}}
+    {% endif%}
+<button typ="submit" >Log In</button>
+</form>
+
+{% endblock BodyContent%}
