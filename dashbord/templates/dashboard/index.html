@@ -1,0 +1,37 @@
+
+{% extends 'core/base.html'%}
+{% block title %} Index Page {% endblock title %}
+{% block BodyContent %}
+
+
+{% include 'core/header.html' %}
+{% include 'core/navbar.html' %}
+<div class="mt-6  px-6 py-12 bg-gray-col-100 rounded-xl">
+{% if items %}
+<h2 class="mb-12 text-2xl text-center">My Items</h2>
+<div class="grid  grid-cols-3 gap-3">   
+{% for item in items %}
+<div>
+    <a href="{% url 'item:detail' item.id %}">
+        <div>
+            {% load static %}
+            <img src="{% get_media_prefix %}{{item.image}}" width="300px" height="300px" class="rounded">
+        </div>
+        <div class="p-6 bg-white rounded-b-xl">
+            <h2 class="text-2xl">{{item.name}}</h2>
+        <p class="text-gray-500">{{item.price}}</p>
+        <div>
+            {{item.Category.name}}
+        </div>
+        </div>
+
+    </a>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+</div>
+
+
+{% include 'core/footer.html' %}
+{% endblock BodyContent %}

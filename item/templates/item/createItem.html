@@ -6,6 +6,7 @@
 {% include 'core/navbar.html' %}
 
 <h1>Add New Item </h1>
+<form  method='POST' enctype="multipart/form-data" >
 {% csrf_token %}
 {{ form.as_p}}
 {% if form.errors or form.non_field_errors%}
@@ -16,4 +17,5 @@
 {{ form.non_field_errors}}
 {% endif%}
 <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700" type="submit" >Add Item</button>
+</form>
 {% endblock BodyContent%}
